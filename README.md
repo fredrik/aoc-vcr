@@ -4,6 +4,8 @@ Visualize your Advent of Code solvers in real-time.
 
 Record state snapshots from your Python solver and watch them play back in a web UI with playback controls, speed adjustment, and live streaming.
 
+![AoC VCR Demo](aoc-vcr.gif)
+
 ## Quick Start
 
 1. Start the backend:
