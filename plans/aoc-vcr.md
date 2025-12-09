@@ -21,14 +21,14 @@ A system for recording and visualizing Advent of Code solutions as they execute,
 
 ## Components
 
-### 1. Python Client Library (`aoc-viz-client`)
+### 1. Python Client Library (`aoc-vcr-client`)
 
 A minimal library that hooks into solver code to record state snapshots.
 
 #### Usage
 
 ```python
-from aoc_viz import Recorder
+from aoc_vcr import Recorder
 
 def solve(input, part):
     rec = Recorder(day=4, part=part)
@@ -182,7 +182,7 @@ A single-page application with no build step or dependencies.
 
 ```
 frontend/
-├── index.html      # Main page, run selector + viz container
+├── index.html      # Main page, run selector + vcr container
 ├── style.css       # Minimal styling
 └── js/
     ├── app.js      # Main application logic
@@ -308,7 +308,7 @@ Frontend                  Backend
 ## Project Structure
 
 ```
-aoc-viz/
+aoc-vcr/
 ├── docker-compose.yml
 ├── README.md
 │
@@ -316,7 +316,7 @@ aoc-viz/
 │   ├── pyproject.toml
 │   ├── Dockerfile
 │   └── src/
-│       └── aoc_viz_backend/
+│       └── aoc_vcr_backend/
 │           ├── __init__.py
 │           ├── main.py          # FastAPI app
 │           ├── routes.py        # API endpoints
@@ -336,7 +336,7 @@ aoc-viz/
 └── client/
     ├── pyproject.toml
     └── src/
-        └── aoc_viz/
+        └── aoc_vcr/
             ├── __init__.py
             ├── recorder.py      # Main Recorder class
             └── serializers.py   # Type detection + conversion
@@ -404,10 +404,10 @@ services:
 
 ## Example: Visualizing Day 4
 
-Day 4 iteratively removes cells from a grid. With the viz system:
+Day 4 iteratively removes cells from a grid. With the vcr system:
 
 ```python
-from aoc_viz import Recorder
+from aoc_vcr import Recorder
 
 def solve(input, part):
     rec = Recorder(day=4, part=part, input_data="".join(input))

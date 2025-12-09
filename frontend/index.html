@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AoC Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>AoC Visualization</h1>
+        </header>
+
+        <main>
+            <aside id="sidebar">
+                <h2>Runs</h2>
+                <ul id="run-list"></ul>
+            </aside>
+
+            <section id="visualization">
+                <div id="vcr-header">
+                    <span id="run-info">Select a run to visualize</span>
+                </div>
+
+                <div id="canvas-container">
+                    <canvas id="vcr-canvas"></canvas>
+                </div>
+
+                <div id="controls">
+                    <div id="playback-buttons">
+                        <button id="btn-first" title="First frame">|&#9664;</button>
+                        <button id="btn-prev" title="Previous frame">&#9664;</button>
+                        <button id="btn-play" title="Play/Pause">&#9654;</button>
+                        <button id="btn-next" title="Next frame">&#9654;</button>
+                        <button id="btn-last" title="Last frame">&#9654;|</button>
+                    </div>
+
+                    <input type="range" id="seek-bar" min="0" max="0" value="0">
+
+                    <div id="playback-info">
+                        <select id="speed-select">
+                            <option value="0.5">0.5x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="2">2x</option>
+                            <option value="5">5x</option>
+                            <option value="10">10x</option>
+                        </select>
+                        <span id="frame-counter">Frame: 0/0</span>
+                    </div>
+                </div>
+
+                <div id="state-panel">
+                    <h3>State</h3>
+                    <pre id="state-data"></pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

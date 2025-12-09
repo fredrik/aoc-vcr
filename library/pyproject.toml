@@ -1,0 +1,16 @@
+[project]
+name = "aoc-vcr"
+version = "0.1.0"
+description = "Client library for recording AoC solver state for visualization"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.27",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aoc_vcr"]
