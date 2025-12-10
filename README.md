@@ -6,6 +6,39 @@ Record state snapshots from your Python solver and watch them play back in a web
 
 ![AoC VCR Demo](aoc-vcr.gif)
 
+## Example
+
+Here is an example of how I've used `aoc-vcr` in a recent [Advent of Code solution](https://github.com/fredrik/advent-of-code/) for 2025 d07.
+
+The code below yielded the gif demo above.
+
+```
+from aoc_vcr import Recorder
+
+def solve(input):
+    grid = parse_input(input)
+
+   with Recorder(year=2025, day=7, part=1) as rec:
+      splits = 0
+      for r, row in enumerate(grid):
+            for c, cell in enumerate(row):
+               if cell == "S":
+                  grid[r + 1][c] = "|"
+               if cell == "." and grid[r - 1][c] == "|":
+                  grid[r][c] = "|"
+               if cell == "^" and grid[r - 1][c] == "|":
+                  grid[r][c + 1] = "|"
+                  grid[r][c - 1] = "|"
+                  splits += 1
+
+               rec.snapshot(grid=grid, splits=splits)
+
+      return splits
+```
+
+All that's needed is to instantiate a `Recorder` with some metadata, and call `snapshot` whenever an interesting change has happened. `snapshot` performs diffing of the data structure (a grid in this case) so only a small amount of data is recorded to the backend for each iteration.
+
+
 ## Quick Start
 
 1. Start the backend:
@@ -17,7 +50,7 @@ Record state snapshots from your Python solver and watch them play back in a web
 
 3. Install the client library:
    ```bash
-   uv pip install -e ./library
+   uv pip install -e path/to/library
    ```
 
 4. Add recording to your solver:
